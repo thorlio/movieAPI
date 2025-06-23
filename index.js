@@ -23,6 +23,7 @@ const allowedOrigins = [
   "http://localhost:3000",
   "https://ohmyflix-1cea4b4ad120.herokuapp.com",
   "https://movieapi-client.netlify.app",
+  "http://localhost:4200",
 ];
 
 app.use(bodyParser.json());
