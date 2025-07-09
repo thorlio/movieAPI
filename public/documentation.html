@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ohMyFlix API Documentation</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>ohMyFlix API Documentation</h1>
+    <p>This documentation describes the RESTful API endpoints of ohMyFlix, a movie database server built with Node.js, Express, and MongoDB.</p>
+  </header>
+
+  <section>
+    <h2>Key Features</h2>
+    <ul>
+      <li>Get a list of all movies</li>
+      <li>Get details of a specific movie by title</li>
+      <li>Get genre or director information</li>
+      <li>Register new users and manage accounts</li>
+      <li>Add/remove movies from a user's favorite list</li>
+      <li>Delete user accounts</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Movie Endpoints</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Endpoint</th>
+          <th>Request Body</th>
+          <th>Response</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td>/movies</td>
+          <td></td>
+          <td>Array of all movies (authentication required)</td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>/movies/:title</td>
+          <td></td>
+          <td>Movie object for the specified title</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>/movies</td>
+          <td>{ "title": "Movie", "genre": "Genre", "director": "Name" }</td>
+          <td>Newly created movie object</td>
+        </tr>
+        <tr>
+          <td>PUT</td>
+          <td>/movies/:title</td>
+          <td>{ "actors": ["Actor"] }</td>
+          <td>Updated movie object</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>/movies/:title</td>
+          <td></td>
+          <td>Confirmation message of deletion</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>User Endpoints</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Method</th>
+          <th>Endpoint</th>
+          <th>Request Body</th>
+          <th>Response</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>GET</td>
+          <td>/users</td>
+          <td></td>
+          <td>Array of all users (authentication required)</td>
+        </tr>
+        <tr>
+          <td>GET</td>
+          <td>/users/:username</td>
+          <td></td>
+          <td>User object for the given username</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>/users</td>
+          <td>{ "Username": "user", "Password": "pw", "Email": "email", "Birthday": "YYYY-MM-DD" }</td>
+          <td>Newly registered user</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>/login</td>
+          <td>{ "Username": "user", "Password": "pw" }</td>
+          <td>Authenticated user and JWT token</td>
+        </tr>
+        <tr>
+          <td>PUT</td>
+          <td>/users/:Username</td>
+          <td>{ "Email": "new@email.com" }</td>
+          <td>Updated user object (authentication required)</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>/users/:Username</td>
+          <td></td>
+          <td>Account deletion confirmation (authentication required)</td>
+        </tr>
+        <tr>
+          <td>POST</td>
+          <td>/users/:Username/movies/:MovieID</td>
+          <td></td>
+          <td>Updated user with added favorite movie</td>
+        </tr>
+        <tr>
+          <td>DELETE</td>
+          <td>/users/:Username/movies/:MovieID</td>
+          <td></td>
+          <td>Updated user with removed favorite movie</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</body>
+
+</html>
